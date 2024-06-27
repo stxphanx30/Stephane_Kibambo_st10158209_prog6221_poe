@@ -14,27 +14,32 @@ namespace poe_
             InitializeComponent();
             recipeApp = new RecipeApp();
         }
+        private void LoadRecipes()
+        {
+            var recipes = recipeApp.GetRecipes();
+            RecipeListBox.ItemsSource = recipes;
+        }
 
-        private void AddNewRecipe_Click(object sender, RoutedEventArgs e)
+        private void AddRecipe_Click(object sender, RoutedEventArgs e)
         {
             AddRecipeWindow addRecipeWindow = new AddRecipeWindow(recipeApp);
             addRecipeWindow.ShowDialog();
+            LoadRecipes();
         }
 
         private void DisplayRecipes_Click(object sender, RoutedEventArgs e)
         {
-            RecipesListBox.Items.Clear();
+            RecipeListBox.Items.Clear();
             foreach (var recipe in recipeApp.GetRecipes())
             {
-                RecipesListBox.Items.Add(recipe.Name);
+                RecipeListBox.Items.Add(recipe.Name);
             }
         }
 
         private void ScaleRecipe_Click(object sender, RoutedEventArgs e)
         {
-            if (RecipesListBox.SelectedItem != null)
+            if (RecipeListBox.SelectedItem is Recipe selectedRecipe)
             {
-                string selectedRecipe = RecipesListBox.SelectedItem.ToString();
                 ScaleRecipeWindow scaleRecipeWindow = new ScaleRecipeWindow(recipeApp, selectedRecipe);
                 scaleRecipeWindow.ShowDialog();
             }
@@ -46,9 +51,9 @@ namespace poe_
 
         private void ResetQuantities_Click(object sender, RoutedEventArgs e)
         {
-            if (RecipesListBox.SelectedItem != null)
+            if (RecipeListBox.SelectedItem != null)
             {
-                string selectedRecipe = RecipesListBox.SelectedItem.ToString();
+                string selectedRecipe = RecipeListBox.SelectedItem.ToString();
                 recipeApp.ResetQuantities(selectedRecipe);
                 MessageBox.Show("The quantities have been reset.");
             }
@@ -60,12 +65,12 @@ namespace poe_
 
         private void ClearRecipeData_Click(object sender, RoutedEventArgs e)
         {
-            if (RecipesListBox.SelectedItem != null)
+            if (RecipeListBox.SelectedItem != null)
             {
-                string selectedRecipe = RecipesListBox.SelectedItem.ToString();
+                string selectedRecipe = RecipeListBox.SelectedItem.ToString();
                 recipeApp.ClearRecipeData(selectedRecipe);
                 MessageBox.Show("The recipe data has been cleared.");
-                RecipesListBox.Items.Remove(selectedRecipe);
+                RecipeListBox.Items.Remove(selectedRecipe);
             }
             else
             {
@@ -80,10 +85,10 @@ namespace poe_
             if (double.TryParse(CalorieFilterTextBox.Text, out double maxCalories))
             {
                 var filteredRecipes = recipeApp.FilterRecipes(ingredient, foodGroup, maxCalories);
-                RecipesListBox.Items.Clear();
+                RecipeListBox.Items.Clear();
                 foreach (var recipe in filteredRecipes)
                 {
-                    RecipesListBox.Items.Add(recipe.Name);
+                    RecipeListBox.Items.Add(recipe.Name);
                 }
             }
             else

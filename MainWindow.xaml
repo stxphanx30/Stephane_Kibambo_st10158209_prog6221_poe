@@ -6,7 +6,7 @@
         <StackPanel Margin="10">
             <TextBlock Text="Recipe App" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
             
-            <Button Content="Add New Recipe" Click="AddNewRecipe_Click" Margin="0,0,0,5"/>
+            <Button Content="Add Recipe" Click="AddRecipe_Click" Margin="0,0,0,5"/>
             <Button Content="Display Recipes" Click="DisplayRecipes_Click" Margin="0,0,0,5"/>
             <Button Content="Scale Recipe" Click="ScaleRecipe_Click" Margin="0,0,0,5"/>
             <Button Content="Reset Quantities" Click="ResetQuantities_Click" Margin="0,0,0,5"/>
@@ -18,8 +18,8 @@
             <TextBox Name="FoodGroupFilterTextBox"  Margin="0,0,0,5"/>
             <TextBox Name="CalorieFilterTextBox"  Margin="0,0,0,5"/>
             <Button Content="Filter Recipes" Click="FilterRecipes_Click" Margin="0,0,0,5"/>
-            
-            <ListBox Name="RecipesListBox" Height="200" Margin="0,10,0,0"/>
+
+            <ListBox Name="RecipeListBox" SelectionMode="Single" Height="200" Margin="0,10,0,0"/>
         </StackPanel>
     </Grid>
 </Window>

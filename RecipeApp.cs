@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RecipeApp
+namespace poe_
 {
     class RecipeApp
     {
