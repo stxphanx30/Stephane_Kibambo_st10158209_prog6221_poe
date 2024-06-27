@@ -1,12 +1,16 @@
 ﻿<Window x:Class="poe_.ScaleRecipeWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Scale Recipe" Height="300" Width="300">
+        Title="Scale Recipe" Height="400" Width="400"
+        Background="#f0f0f0">
     <Grid>
         <StackPanel Margin="10">
-            <TextBlock Text="Scale Recipe" FontSize="24" FontWeight="Bold" Margin="0,0,0,10"/>
-            <TextBox Name="ScaleFactorTextBox"  Margin="0,0,0,10"/>
-            <Button Content="Scale" Click="ScaleButton_Click"/>
+            <TextBlock Text="Scale Recipe" FontSize="24" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+
+            <TextBox x:Name="FactorTextBox" Text="Enter Scaling Factor" Margin="0,0,0,5" Padding="8" FontSize="14" Foreground="#808080" GotFocus="FactorTextBox_GotFocus" LostFocus="FactorTextBox_LostFocus"/>
+            <Button Content="Scale Recipe" Click="ScaleRecipe_Click" Margin="10"/>
+
+            <ListBox Name="IngredientsListBox" Height="200" Margin="0,10,0,0" FontSize="14"/>
         </StackPanel>
     </Grid>
 </Window>

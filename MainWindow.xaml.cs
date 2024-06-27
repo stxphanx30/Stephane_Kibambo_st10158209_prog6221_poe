@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace poe_
 {
@@ -94,6 +95,25 @@ namespace poe_
             else
             {
                 MessageBox.Show("Please enter a valid number for calories.");
+            }
+        }
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (textBox.Foreground == Brushes.Gray)
+            {
+                textBox.Text = "";
+                textBox.Foreground = Brushes.Black; // Or any other color for active text
+            }
+        }
+
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                textBox.Text = "Enter Text"; // Restore placeholder
+                textBox.Foreground = Brushes.Gray; // Or the initial placeholder color
             }
         }
     }
