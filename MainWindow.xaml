@@ -61,9 +61,9 @@
             <StackPanel Margin="5">
                 <Label Content="Select Scale Factor:" FontWeight="Bold" Foreground="DarkSlateGray" Margin="5"/>
                 <StackPanel Orientation="Horizontal">
-                    <RadioButton x:Name="Scale1_5" Content="1.5x" Foreground="DarkSlateGray" Margin="5"/>
-                    <RadioButton x:Name="Scale2_0" Content="2.0x" Foreground="DarkSlateGray" Margin="5"/>
-                    <RadioButton x:Name="Scale3_0" Content="3.0x" Foreground="DarkSlateGray" Margin="5"/>
+                    <RadioButton x:Name="Scale0_5" Content="0.5" Foreground="DarkSlateGray" Margin="5"/>
+                    <RadioButton x:Name="Scale2_0" Content="2.0" Foreground="DarkSlateGray" Margin="5"/>
+                    <RadioButton x:Name="Scale3_0" Content="3.0" Foreground="DarkSlateGray" Margin="5"/>
                 </StackPanel>
                 <Button Content="Apply Scale" Click="OnApplyScaleClick" Width="100" Height="30" Background="PaleGreen" Foreground="DarkSlateGray" Margin="5"/>
             </StackPanel>

@@ -216,7 +216,7 @@ namespace poe_
             var selectedRecipe = RecipeListBox.SelectedItem as Recipe;
             double scaleFactor = 1.0;
 
-            if (Scale1_5.IsChecked == true)
+            if (Scale0_5.IsChecked == true)
                 scaleFactor = 0.5;
             else if (Scale2_0.IsChecked == true)
                 scaleFactor = 2.0;
