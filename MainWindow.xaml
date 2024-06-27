@@ -1,29 +1,90 @@
 ﻿<Window x:Class="poe_.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Recipe App" Height="450" Width="800"
-        Background="#f0f0f0">
+        Title="Recipe Manager" Height="600" Width="800"
+        Background="LightCyan">
+    <!-- Set the background to LightCyan for a refreshing look -->
     <Grid>
-        <StackPanel Margin="10">
-            <TextBlock Text="Recipe App" FontSize="24" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Center"/>
-            
-            <Button Content="Add Recipe" Click="AddRecipe_Click" Margin="0,0,0,5" Padding="10" Background="#2196F3" Foreground="White" FontWeight="Bold" FontSize="16"/>
-            <Button Content="Display Recipes" Click="DisplayRecipes_Click" Margin="0,0,0,5" Padding="10" Background="#4CAF50" Foreground="White" FontWeight="Bold" FontSize="16"/>
-            <Button Content="Scale Recipe" Click="ScaleRecipe_Click" Margin="0,0,0,5" Padding="10" Background="#FF9800" Foreground="White" FontWeight="Bold" FontSize="16"/>
-            <Button Content="Reset Quantities" Click="ResetQuantities_Click" Margin="0,0,0,5" Padding="10" Background="#9C27B0" Foreground="White" FontWeight="Bold" FontSize="16"/>
-            <Button Content="Clear Recipe Data" Click="ClearRecipeData_Click" Margin="0,0,0,5" Padding="10" Background="#E91E63" Foreground="White" FontWeight="Bold" FontSize="16"/>
-            
-            <TextBlock Text="Filter Recipes" FontSize="18" FontWeight="Bold" Margin="0,10,0,5"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                <TextBox Name="IngredientFilterTextBox" Margin="0,0,5,0" Padding="8" Text="Enter Ingredient" FontSize="14" Foreground="#808080" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
-                <TextBox Name="FoodGroupFilterTextBox" Margin="0,0,5,0" Padding="8" Text="Choose Food Group" FontSize="14" Foreground="#808080" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
-                <TextBox Name="CalorieFilterTextBox" Margin="0,0,0,0" Padding="8" Text="Maximum Calories" FontSize="14" Foreground="#808080" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+        <!-- Sidebar for Navigation -->
+        <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Background="DarkSlateGray" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Label Content="Recipe Manager" FontSize="22" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="10"/>
+            <Button Content="Add Recipe" Click="OnAddRecipeClick" Width="150" Height="40" Background="PaleGreen" Foreground="DarkSlateGray" Margin="10"/>
+            <Button Content="View Recipes" Click="OnViewRecipesClick" Width="150" Height="40" Background="PaleGreen" Foreground="DarkSlateGray" Margin="10"/>
+            <Button Content="Scale Recipe" Click="OnScaleRecipeClick" Width="150" Height="40" Background="PaleGreen" Foreground="DarkSlateGray" Margin="10"/>
+            <Button Content="Clear Recipes" Click="OnClearRecipesClick" Width="150" Height="40" Background="PaleGreen" Foreground="DarkSlateGray" Margin="10"/>
+            <Button Content="Filter Recipes" Click="OnFilterRecipesClick" Width="150" Height="40" Background="PaleGreen" Foreground="DarkSlateGray" Margin="10"/>
+            <Button Content="Exit" Click="OnExitClick" Width="150" Height="40" Background="PaleGreen" Foreground="DarkSlateGray" Margin="10"/>
+        </StackPanel>
+
+        <!-- Add Recipe Section -->
+        <StackPanel Grid.Row="1" Grid.Column="1" x:Name="AddRecipePanel" Margin="10" Visibility="Collapsed">
+            <Label Content="Add New Recipe" FontSize="18" FontWeight="Bold" Foreground="DarkSlateGray" Margin="5"/>
+            <StackPanel Margin="5">
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Content="Name:" FontWeight="Bold" Foreground="DarkSlateGray" Width="100"/>
+                    <TextBox x:Name="RecipeNameTextBox" Text="Enter Recipe Name" Foreground="Gray" Width="300" Height="30" GotFocus="OnTextBoxGotFocus" LostFocus="OnTextBoxLostFocus"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Content="Ingredient:" FontWeight="Bold" Foreground="DarkSlateGray" Width="100"/>
+                    <TextBox x:Name="IngredientNameTextBox" Text="Enter Ingredient" Foreground="Gray" Width="300" Height="30" GotFocus="OnTextBoxGotFocus" LostFocus="OnTextBoxLostFocus"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Content="Quantity:" FontWeight="Bold" Foreground="DarkSlateGray" Width="100"/>
+                    <TextBox x:Name="IngredientQuantityTextBox" Text="Enter Quantity" Foreground="Gray" Width="100" Height="30" GotFocus="OnTextBoxGotFocus" LostFocus="OnTextBoxLostFocus"/>
+                    <Label Content="Unit:" FontWeight="Bold" Foreground="DarkSlateGray" Width="50" Margin="10,0,0,0"/>
+                    <TextBox x:Name="IngredientUnitTextBox" Text="Enter Unit" Foreground="Gray" Width="150" Height="30" GotFocus="OnTextBoxGotFocus" LostFocus="OnTextBoxLostFocus"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Content="Calories:" FontWeight="Bold" Foreground="DarkSlateGray" Width="100"/>
+                    <TextBox x:Name="IngredientCaloriesTextBox" Text="Enter Calories" Foreground="Gray" Width="100" Height="30" GotFocus="OnTextBoxGotFocus" LostFocus="OnTextBoxLostFocus"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Content="Steps:" FontWeight="Bold" Foreground="DarkSlateGray" Width="100"/>
+                    <TextBox x:Name="RecipeStepsTextBox" Text="Enter Steps" Foreground="Gray" Width="300" Height="100" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" GotFocus="OnTextBoxGotFocus" LostFocus="OnTextBoxLostFocus"/>
+                </StackPanel>
+                <Button Content="Save Recipe" Click="OnSaveRecipeClick" Width="100" Height="30" Background="PaleGreen" Foreground="DarkSlateGray" Margin="5"/>
             </StackPanel>
+        </StackPanel>
 
-            <Button Content="Filter Recipes" Click="FilterRecipes_Click" Margin="0,0,0,5" Padding="10" Background="#607D8B" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <!-- Scale Recipe Section -->
+        <StackPanel Grid.Row="1" Grid.Column="1" x:Name="ScaleRecipePanel" Margin="10" Visibility="Collapsed">
+            <Label Content="Scale Recipe" FontSize="18" FontWeight="Bold" Foreground="DarkSlateGray" Margin="5"/>
+            <StackPanel Margin="5">
+                <Label Content="Select Scale Factor:" FontWeight="Bold" Foreground="DarkSlateGray" Margin="5"/>
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton x:Name="Scale1_5" Content="1.5x" Foreground="DarkSlateGray" Margin="5"/>
+                    <RadioButton x:Name="Scale2_0" Content="2.0x" Foreground="DarkSlateGray" Margin="5"/>
+                    <RadioButton x:Name="Scale3_0" Content="3.0x" Foreground="DarkSlateGray" Margin="5"/>
+                </StackPanel>
+                <Button Content="Apply Scale" Click="OnApplyScaleClick" Width="100" Height="30" Background="PaleGreen" Foreground="DarkSlateGray" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
 
-            <ListBox Name="RecipeListBox" SelectionMode="Single" Height="200" Margin="0,10,0,0" FontSize="14"/>
+        <!-- Recipe List Section -->
+        <ListBox Grid.Row="1" Grid.Column="1" x:Name="RecipeListBox" SelectionMode="Single" Visibility="Collapsed" SelectionChanged="OnRecipeSelectionChanged" Margin="10">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding RecipeName}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!-- Filter Recipe Section -->
+        <StackPanel Grid.Row="1" Grid.Column="1" x:Name="FilterPanel" Margin="10" Visibility="Collapsed">
+            <Label Content="Filter by Ingredient" FontSize="18" FontWeight="Bold" Foreground="DarkSlateGray" Margin="5"/>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBox x:Name="FilterIngredientTextBox" Text="Enter Ingredient Name" Foreground="Gray" Width="300" Height="30" GotFocus="OnTextBoxGotFocus" LostFocus="OnTextBoxLostFocus"/>
+                <Button Content="Filter" Click="OnFilterRecipesClick" Width="100" Height="30" Background="PaleGreen" Foreground="DarkSlateGray" Margin="10,0,0,0"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>

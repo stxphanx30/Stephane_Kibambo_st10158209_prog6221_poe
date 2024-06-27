@@ -42,6 +42,7 @@ namespace poe_
             }
         }
 
+
         private void FactorTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
