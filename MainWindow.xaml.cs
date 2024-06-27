@@ -6,7 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace ST10038389_PROG6221_PART_3
+namespace poe_
 {
     // Main window class for the Recipe Manager application.
     public partial class MainWindow : Window
@@ -217,7 +217,7 @@ namespace ST10038389_PROG6221_PART_3
             double scaleFactor = 1.0;
 
             if (Scale1_5.IsChecked == true)
-                scaleFactor = 1.5;
+                scaleFactor = 0.5;
             else if (Scale2_0.IsChecked == true)
                 scaleFactor = 2.0;
             else if (Scale3_0.IsChecked == true)

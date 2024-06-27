@@ -1,7 +1,7 @@
 ﻿using poe_;
 using System.Collections.Generic;
 
-namespace ST10038389_PROG6221_PART_3
+namespace poe_
 {
     /// <summary>
     ///// Class to represent a Recipe.
