@@ -10,7 +10,7 @@ namespace poe_
     /// </summary>
     /// /// --------------------------------------------------------------------------------------------------------------------------------------------
     /// 
-    class Recipe
+    public class Recipe
     {
         public string Name { get; set; }
         // List to store ingredients

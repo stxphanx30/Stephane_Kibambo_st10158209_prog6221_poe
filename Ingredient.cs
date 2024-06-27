@@ -5,7 +5,7 @@
     /// </summary>
     /// /// --------------------------------------------------------------------------------------------------------------------------------------------
     /// 
-    class Ingredient
+    public class Ingredient
     {
         public string Name { get; }
         public double Quantity { get; set; }

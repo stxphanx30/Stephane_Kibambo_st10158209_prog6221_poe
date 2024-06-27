@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace poe_
 {
-    class RecipeApp
+    public class RecipeApp
     {
         private List<Recipe> recipes = new List<Recipe>();
 
