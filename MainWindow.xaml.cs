@@ -8,13 +8,29 @@ using System.Windows.Media;
 
 namespace poe_
 {
-    // Main window class for the Recipe Manager application.
+    /// <summary>
+    ///// // Main window class for the Recipe Manager application.
+    /// </summary>
+    /// /// --------------------------------------------------------------------------------------------------------------------------------------------
+    /// 
+
     public partial class MainWindow : Window
     {
-        // List to store recipes.
+        /// <summary>
+        ///// // List to store recipes.
+        /// </summary>
+        /// /// --------------------------------------------------------------------------------------------------------------------------------------------
+        /// 
+
+
         private List<Recipe> recipes = new List<Recipe>();
 
-        // Constructor to initialize the main window.
+        /// <summary>
+        ///// // Constructor to initialize the main window.
+        /// </summary>
+        /// /// --------------------------------------------------------------------------------------------------------------------------------------------
+        /// 
+
         public MainWindow()
         {
             InitializeComponent();
@@ -230,8 +246,12 @@ namespace poe_
 
             MessageBox.Show("Recipe scaled successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+        /// <summary>
+        /////  // Handle recipe selection change to display details.
+        /// </summary>
+        /// /// --------------------------------------------------------------------------------------------------------------------------------------------
+        /// 
 
-        // Handle recipe selection change to display details.
         private void OnRecipeSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (RecipeListBox.SelectedItem != null)
